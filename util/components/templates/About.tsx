@@ -1,70 +1,59 @@
-import React from 'react';
-import { Text, Box, Heading, Grid, Flex } from '@chakra-ui/react';
+import React from 'react'
+import {
+	Heading,
+	Box,
+	Grid,
+	Text
+} from '@chakra-ui/react';
+import Image from 'next/image';
 import { BasePropsType } from '../types/prop_types';
-import { useBreakpoint } from '@chakra-ui/react';
 
-const Experience = ({ template }: BasePropsType) => {
-	const value = useBreakpoint();
-	return (
+const About = ({ template }: BasePropsType) => {
+	const asset = template.assetsIds[0];
+	return <Box
+		py={{ base: '1rem', lg: '4.2rem'}}
+		width={{ base: '90%', lg: '75%'}}
+		m={{ base: '2rem auto', lg: '5rem auto'}}
+		borderTop='1px solid white'
+	>
 		<Grid
-			templateColumns={{ base: '1fr', md: '1fr 2fr' }}
-			gap={{ md: '4.5rem' }}
-			width={{ base: '90%', md: '75%' }}
-			my='3rem'
-			mr={{ md: 'auto' }}
-			ml={{ md: '5rem' }}
-			fontSize='1.2rem'
-			maxW='1200px'
+			gridTemplateColumns={{ base: '1fr', lg: '1fr .5fr'}}
+			gap={{ base: '1rem', md: '5rem' }}
+			p='1rem'
 		>
-			{
-				template.assetsIds.map(obj => {
-					return <>
-						{obj.title && <Flex
-							key={obj._id}
-							flexDir='column'
-						>
-							<Text
-								py='.5rem'
-								pb='1rem'
-								text-align={obj?.textAlign}
-								whiteSpace='nowrap'
-								fontStyle='italic'
-							>
-								{obj.title}
-							</Text>
-							{value !== 'base' && <Box
-								width='25%'
-								borderBottom='1px solid #eeeeef'
-							/>}
-						</Flex>}
-						<Flex
-							gap='3rem'
-						>
-							{value === 'base' && <Box
-								width='25%'
-								borderBottom='1px solid #eeeeef'
-								height={{ base: '0', md: '3%' }}
-								minW='5rem'
-							/>}
-							<Text
-								as='span'
-								dangerouslySetInnerHTML={{ __html: obj.richDescription ?? '' }}
-								text-align={obj?.textAlign}
-								fontSize='1.5rem'
-								lineHeight='2.5'
-								sx={{
-									'h2': {
-										fontSize: value === 'base' ? '1.5rem' : '2.5rem',
-										lineHeight: value === 'base' ? '2.5rem' : '4rem'
-									}
-								}}
-							/>
-						</Flex>
-					</>
-				})
-			}
+			<Box
+				pl={{ base: '0', lg: '2rem' }}
+				order={{ base: '1', lg: '0'}}
+				textAlign={{ base: 'center', lg: 'left'}}
+			>
+				<Heading mb={{ base: '0', lg: '2rem'}}>{asset.description}</Heading>
+				<Text
+					as='span'
+					display='inline-block'
+					mt='2rem'
+					lineHeight='3rem'
+					fontSize='min(2rem, 6vw)'
+					dangerouslySetInnerHTML={{ __html: asset.richDescription ?? '' }}
+				/>
+			</Box>
+			<Box
+				borderRadius='42%'
+				overflow='hidden'
+				m='auto'
+				maxWidth={{ base: '300px' }}
+				minWidth={{ md: '200px' }}
+				order={{ base: '0', lg: '1'}}
+			>
+				<Image
+					objectFit='contain'
+					width={asset.assetDimensions[0]}
+					height={asset.assetDimensions[1]}
+					alt={asset.title ?? 'About Image'}
+					src={process.env.NEXT_PUBLIC_CLOUDFRONT_URL as string + asset.assetKey}
+				/>
+			</Box>
 		</Grid>
-	)
+	</Box>
 }
 
-export default Experience;
+export default About;
