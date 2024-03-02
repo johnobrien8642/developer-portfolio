@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ListFieldItem from './ListFieldItem';
 import {
 	Box,
@@ -33,10 +33,10 @@ const ListField = ({
 	const [chosenItems, setChosenItems] = useState<AllDocUnionType[]>([]);
 	const [itemFilter, setItemFilter] = useState('');
 	const [searchAvailable, setSearchAvailable] = useState(false);
-	const [again, tryAgain] = useState(0);
 	const [itemFilterArr, setItemFilterArr] =
 		useState<typeof templatesEnumValueArr | typeof assetsEnumValueArr | null>([]);
 	const [textFilter, setTextFilter] = useState('');
+	const tryRef = useRef(0);
 	const { formSelected, setFormSelected, data, setData, setFormCache, formCache } = useManagePageForm();
 	const formTitle = formCache[formCache.active]?.formTitle ?? '';
 
@@ -78,16 +78,15 @@ const ListField = ({
 				setAvailableItems(availableItems);
 				setChosenItems(chosenItems);
 			} catch (err) {
-				if (again < 10) {
-					setTimeout(() => {
-						tryAgain(prev => prev + 1)
-					}, 200);
-				} else {
-					console.log('Error in ListField get_list_field_items', err);
+				if (tryRef.current < 3) {
+					setTimeout(async () => {
+						await handleGetList();
+					}, 300)
+					tryRef.current + 1;
 				}
 			}
 		}
-	}, [itemFilter, formCache, again]);
+	}, [itemFilter, formCache]);
 
 	return (
 		<Flex
