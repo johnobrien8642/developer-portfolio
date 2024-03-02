@@ -36,7 +36,6 @@ const ListField = ({
 	const [itemFilterArr, setItemFilterArr] =
 		useState<typeof templatesEnumValueArr | typeof assetsEnumValueArr | null>([]);
 	const [textFilter, setTextFilter] = useState('');
-	const tryRef = useRef(0);
 	const { formSelected, setFormSelected, data, setData, setFormCache, formCache } = useManagePageForm();
 	const formTitle = formCache[formCache.active]?.formTitle ?? '';
 
@@ -71,20 +70,11 @@ const ListField = ({
 				paramsObj['itemType'] = itemFilter;
 			}
 			const params = new URLSearchParams(paramsObj);
-			try {
-				const res = await fetch(`/api/get_list_field_items?${params}`);
-				const resData = await res.json();
-				const { availableItems, chosenItems } = resData;
-				setAvailableItems(availableItems);
-				setChosenItems(chosenItems);
-			} catch (err) {
-				if (tryRef.current < 3) {
-					setTimeout(async () => {
-						await handleGetList();
-					}, 300)
-					tryRef.current + 1;
-				}
-			}
+			const res = await fetch(`/api/get_list_field_items?${params}`);
+			const resData = await res.json();
+			const { availableItems, chosenItems } = resData;
+			setAvailableItems(availableItems);
+			setChosenItems(chosenItems);
 		}
 	}, [itemFilter, formCache]);
 
