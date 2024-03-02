@@ -130,7 +130,6 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 										<Text
 											key={obj._id}
 											fontWeight={router.asPath === obj.folderHref ? '800' : '200'}
-											fontSize={router.asPath === obj.folderHref ? '1.8rem !important' : '1.5rem'}
 											sx={{
 												'a:hover': {
 													color: 'lightgray'
