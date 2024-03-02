@@ -33,6 +33,7 @@ const ListField = ({
 	const [chosenItems, setChosenItems] = useState<AllDocUnionType[]>([]);
 	const [itemFilter, setItemFilter] = useState('');
 	const [searchAvailable, setSearchAvailable] = useState(false);
+	const [again, tryAgain] = useState(0);
 	const [itemFilterArr, setItemFilterArr] =
 		useState<typeof templatesEnumValueArr | typeof assetsEnumValueArr | null>([]);
 	const [textFilter, setTextFilter] = useState('');
@@ -70,13 +71,23 @@ const ListField = ({
 				paramsObj['itemType'] = itemFilter;
 			}
 			const params = new URLSearchParams(paramsObj);
-			const res = await fetch(`/api/get_list_field_items?${params}`);
-			const resData = await res.json();
-			const { availableItems, chosenItems } = resData;
-			setAvailableItems(availableItems);
-			setChosenItems(chosenItems);
+			try {
+				const res = await fetch(`/api/get_list_field_items?${params}`);
+				const resData = await res.json();
+				const { availableItems, chosenItems } = resData;
+				setAvailableItems(availableItems);
+				setChosenItems(chosenItems);
+			} catch (err) {
+				if (again < 10) {
+					setTimeout(() => {
+						tryAgain(prev => prev + 1)
+					}, 200);
+				} else {
+					console.log('Error in ListField get_list_field_items', err);
+				}
+			}
 		}
-	}, [itemFilter, formCache]);
+	}, [itemFilter, formCache, again]);
 
 	return (
 		<Flex
