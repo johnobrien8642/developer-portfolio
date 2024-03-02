@@ -27,12 +27,12 @@ const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
 			semanticTokens: {
 				colors: {
 					'chakra-body-bg': {
-						_dark: process.env.NEXT_PUBLIC_BG_COLOR,
-						_light: process.env.NEXT_PUBLIC_BG_COLOR
+						_dark: '#38383b',
+						_light: '#38383b'
 					},
 					'chakra-body-text': {
-						_dark: process.env.NEXT_PUBLIC_BG_COLOR === 'black' ? 'white' : 'black',
-						_light: process.env.NEXT_PUBLIC_BG_COLOR === 'black' ? 'white' : 'black'
+						_dark: '#d2d2d2',
+						_light: '#eeeeef'
 					}
 				}
 			}
