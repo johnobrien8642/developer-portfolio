@@ -18,7 +18,7 @@ const ImageInfo = ({ image }: { image: AssetsType }) => {
 			px={{ base: '1rem', md: '2rem' }}
 			maxW={{ base: '95%', md: '82%' }}
 		>
-			<Heading>{image.title}</Heading>
+			<Heading py='1rem' lineHeight='2.5rem'>{image.title}</Heading>
 			{
 				image.extLink &&
 					<Link
@@ -34,7 +34,7 @@ const ImageInfo = ({ image }: { image: AssetsType }) => {
 								}
 							}}
 						>
-							Buy it now
+							{image.extLinkText}
 						</Button>
 					</Link>
 			}
@@ -42,6 +42,8 @@ const ImageInfo = ({ image }: { image: AssetsType }) => {
 				as='span'
 				overflow='auto'
 				display='inline-block'
+				fontSize='1.2rem'
+				lineHeight='2.5rem'
 				dangerouslySetInnerHTML={{ __html: image.richDescription ?? '' }}
 			/>
 		</Box>

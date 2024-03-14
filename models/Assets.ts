@@ -81,6 +81,8 @@ const optionsObj: { [key: string]: OptionsType } = {
 			'PDFView': 1
 		}
 	},
+	extLinkText: {
+	},
 	pagesIds: {
 		formTitle: 'Page',
 		filterType: false
@@ -147,6 +149,10 @@ const AssetsSchema = new Schema({
 	extLink: {
 		type: String,
 		...optionsObj.extLink
+	},
+	extLinkText: {
+		type: String,
+		...optionsObj.extLinkText
 	},
 	pagesIds: {
 		type: [
