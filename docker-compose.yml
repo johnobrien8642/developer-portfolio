@@ -28,7 +28,7 @@ services:
       driver: none
     volumes:
       - type: volume
-        source: DP_MONGO_CONFIG
+        source: DP_MONGO_DATA
         target: /data/db
       - type: volume
         source: DP_MONGO_CONFIG
@@ -55,8 +55,8 @@ services:
         ipv4_address: 10.0.2.20
 
 volumes:
-  DP_MONGO_CONFIG:
-    name: DP_MONGO_CONFIG
+  DP_MONGO_DATA:
+    name: DP_MONGO_DATA
   DP_MONGO_CONFIG:
     name: DP_MONGO_CONFIG
 
