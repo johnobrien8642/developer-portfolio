@@ -6,15 +6,15 @@ import MyImage from '../Image';
 
 const LinkList = ({ template }: BasePropsType ) => {
 	return (
-		<Center
-			mb='5rem'
+		<Flex
+			mb='15rem'
 			flexDir={{ base: 'column', md: 'row' }}
 		>
 			{template.assetsIds.map(asset => {
 				return <Box
 					position='relative'
 					width='fit-content'
-					mx='2rem'
+					m='2rem'
 				>
 					<Flex
 						justifyContent='center'
@@ -41,7 +41,7 @@ const LinkList = ({ template }: BasePropsType ) => {
 					/>
 				</Box>
 			})}
-		</Center>
+		</Flex>
 	)
 }
 
