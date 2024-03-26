@@ -14,14 +14,13 @@ const LinkList = ({ template }: BasePropsType ) => {
 				return <Box
 					position='relative'
 					width='fit-content'
-					my='2rem'
+					m='2rem'
 				>
 					<Flex
 						justifyContent='center'
 						alignItems='center'
-						width='75%'
 					>
-						<MyImage image={asset} />
+						<MyImage image={asset} maxW='200px' />
 						<Box
 							ml='2rem'
 						>
