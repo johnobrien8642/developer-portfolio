@@ -19,6 +19,7 @@ const LinkList = ({ template }: BasePropsType ) => {
 					<Flex
 						justifyContent='center'
 						alignItems='center'
+						flexDir={{ base: 'column', md: 'row' }}
 					>
 						<MyImage image={asset} maxW='200px' />
 						<Box
