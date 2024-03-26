@@ -23,17 +23,13 @@ const LinkList = ({ template }: BasePropsType ) => {
 					>
 						<MyImage image={asset} maxW='200px' />
 						<Box
-							ml={{ md: '2rem' }}
+							ml={{ base: '0', md: '2rem' }}
 							my={{ base: '2rem', md: '0'}}
 						>
 							<Link
 								href={asset.extLink ?? ''}
 							>
-								<Button
-									width={{ base: '100px' }}
-									padding={{ base: '.5rem' }}
-									height={{ base: 'fit-content' }}
-								>
+								<Button>
 									{asset.extLinkText}
 								</Button>
 							</Link>
