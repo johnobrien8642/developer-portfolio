@@ -24,7 +24,7 @@ const LinkList = ({ template }: BasePropsType ) => {
 						<MyImage image={asset} maxW='200px' />
 						<Box
 							ml={{ base: '0', md: '2rem' }}
-							my={{ base: '2rem', md: '0'}}
+							mt={{ base: '2rem', md: '0'}}
 						>
 							<Link
 								href={asset.extLink ?? ''}
