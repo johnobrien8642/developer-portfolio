@@ -13,7 +13,8 @@ export enum TemplatesEnum {
 	PDFList = 'PDFList',
 	PatronProdList = 'PatronProdList',
 	Experience = 'Experience',
-	About = 'About'
+	About = 'About',
+	LinkList = 'LinkList'
 }
 
 export enum AssetsEnum {
