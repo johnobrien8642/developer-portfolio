@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2020"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "@client/*": ["client/*"],
+      "@core/*": ["core/*"],
+      "@components/*": ["client/components/*"],
+      "@contexts/*": ["core/contexts/*"],
+      "@pages/*": ["pages/*"],
+    },
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "/home/johnobrien/personal-site/.next/types/**/*.ts",
+    "core/lib/dbConnect.ts",
+    "pages/[[...slug]].js",
+    "pages/[..slug]/index.js",
+    "client/components/*.tsx",
+    "client/components/*.ts",
+    "client/components/*.js",
+    "client/components/templates/*.js",
+    "client/components/templates/TextBlock.tdsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
