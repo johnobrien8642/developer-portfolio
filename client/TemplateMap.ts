@@ -6,10 +6,9 @@ import TextBlock from "@client/components/templates/TextBlock";
 import PDFView from "@client/components/templates/PDFView";
 import PDFList from "@client/components/templates/PDFList";
 import PatronProdList from "@client/components/templates/PatronProdList";
-import BookCoverCTA from "@client/components/templates/BookCoverCTA";
+import Experience from "@client/components/templates/Experience";
 import About from "@client/components/templates/About";
-import OneTimePatrons from "@client/components/templates/OneTimePatrons";
-import EmbedComp from '@client/components/templates/Embed';
+import LinkList from "@client/components/templates/LinkList";
 
 const TemplateMap: { [key: string]: any } = {
 	'PhotoList': PhotoList,
@@ -19,10 +18,9 @@ const TemplateMap: { [key: string]: any } = {
 	'PDFList': PDFList,
 	'PDFView': PDFView,
 	'PatronProdList': PatronProdList,
-	'BookCoverCTA': BookCoverCTA,
+	'Experience': Experience,
 	'About': About,
-	'OneTimePatrons': OneTimePatrons,
-	'Embed': EmbedComp
+	'LinkList': LinkList
 }
 
 export default TemplateMap;
